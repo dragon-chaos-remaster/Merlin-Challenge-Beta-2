@@ -35,6 +35,7 @@ public class Snared : MonoBehaviour
     {
         navMeshAgent.velocity = Vector3.zero;
         navMeshAgent.speed = snare;
+        FindObjectOfType<AudioManager>().Play("snare");
         //enemyStop.enabled = false;
         navMeshAgent.isStopped = true;
     }
@@ -48,7 +49,7 @@ public class Snared : MonoBehaviour
         {
             navMeshAgent.velocity = Vector3.one;
             navMeshAgent.speed = velocidadeOriginal;
-           
+            FindObjectOfType<AudioManager>().Play("revertSnare");
             navMeshAgent.isStopped = false;
             tempoAtivo = 0f;
 

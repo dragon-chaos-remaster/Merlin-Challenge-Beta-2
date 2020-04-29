@@ -33,12 +33,12 @@ public class Magia : MonoBehaviour
 
 
 
-    public float manaRegenSegundo = 3f;
+    public float manaRegenSegundo = 0.1f;
     public float manaMax = 100f;
     public float updatedMana = 100f;
-    public float custoManaFogo = 10f;
+    public float custoManaFogo = 25f;
     public float custoManaRaio = 15f;
-    public float custoManaNaoSei = 20f;
+    public float custoManaRaiz = 20f;
     public Text quantidadeMana;
     public Image barraMana;
 
@@ -174,10 +174,10 @@ public class Magia : MonoBehaviour
         {
            // print("pei");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 1000, hitavel) && (seiLa) && (updatedMana >= custoManaNaoSei) && (coolDown.podeAtacarSnare))
+            if (Physics.Raycast(ray, out hit, 1000, hitavel) && (seiLa) && (updatedMana >= custoManaRaiz) && (coolDown.podeAtacarSnare))
             {
                 Transform aux = Instantiate(raizes, raizesPoint.position, raizesPoint.rotation);
-                updatedMana -= custoManaNaoSei;
+                updatedMana -= custoManaRaiz;
                 coolDown.podeAtacarSnare = false;
                 coolDown.waitFireRateSnare = 1;
             }

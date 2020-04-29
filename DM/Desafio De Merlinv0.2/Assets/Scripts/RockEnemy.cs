@@ -99,11 +99,13 @@ public class RockEnemy : MonoBehaviour
                     Vector3 moveTowardsPlayer = (targetPos.position - new Vector3(transform.position.x, transform.position.y, transform.position.z * 0.1f)).normalized * agent.speed;
                     transform.Rotate(transform.forward * 10);
                     myBody.velocity = moveTowardsPlayer;
+                    
                     Invoke("BeginNavMesh", 4.5f);
                 }
                 else
                 {
                     myBody.mass = 1f;
+                    snare.Desnare(1.5f);
                     agent.SetDestination(targetPos.position);
                 }
                 //StartCoroutine(BeginNavMesh());
@@ -117,7 +119,8 @@ public class RockEnemy : MonoBehaviour
     void BeginNavMesh()
     {      
         agent.enabled = true;
-        startNavMesh = true;    
+        startNavMesh = true;
+        
     }
     
     //private void OnCollisionEnter(Collision chaoDetected)
@@ -158,7 +161,7 @@ public class RockEnemy : MonoBehaviour
 
         }
     }
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, areaDeDetecao);
